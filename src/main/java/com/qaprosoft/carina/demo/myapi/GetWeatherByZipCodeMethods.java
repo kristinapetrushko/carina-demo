@@ -5,9 +5,9 @@ import com.qaprosoft.carina.core.foundation.utils.Configuration;
 
 import java.util.Properties;
 
-public class GetCurrentWeatherMethods extends AbstractApiMethodV2 {
-    public GetCurrentWeatherMethods() {
-        super(null, "myapi/_get/currentWeather/rs.json", new Properties());
+public class GetWeatherByZipCodeMethods extends AbstractApiMethodV2 {
+    public GetWeatherByZipCodeMethods() {
+        super(null, "myapi/_get/byZipCode/rs.json", new Properties());
         replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
     }
 }
