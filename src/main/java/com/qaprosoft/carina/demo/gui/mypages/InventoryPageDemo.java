@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class InventoryPageDemo extends AbstractPage {
 
-    public static final String inventoryURL = "https://www.saucedemo.com/inventory.html";
-
     @FindBy(className = "bm-burger-button")
     private ExtendedWebElement menuButton;
 
@@ -24,11 +22,51 @@ public class InventoryPageDemo extends AbstractPage {
     @FindBy(className = "inventory_item_price")
     private ExtendedWebElement productPrice;
 
-    @FindBy(className = "btn btn_primary btn_small btn_inventory")
+    @FindBy(id = "add-to-cart-test.allthethings()-t-shirt-(red)")
     private ExtendedWebElement addToCart;
 
     @FindBy(className = "product_sort_container")
     private ExtendedWebElement sortItem;
+
+    @FindBy(xpath = "//*[@id=\"header_container\"]/div[2]/div[2]/span/select/option[1]")
+    private ExtendedWebElement optionDropdownByName;
+
+    @FindBy(xpath = "//*[@id=\"header_container\"]/div[2]/div[2]/span/select/option[2]")
+    private ExtendedWebElement optionDropdownByNameZA;
+
+    @FindBy(xpath = "//*[@id=\"header_container\"]/div[2]/div[2]/span/select/option[3]")
+    private ExtendedWebElement optionDropdownByPriceLH;
+
+    @FindBy(xpath = "//*[@id=\"header_container\"]/div[2]/div[2]/span/select/option[4]")
+    private ExtendedWebElement optionDropdownByPriceHL;
+
+    @FindBy(xpath = "//*[@id=\"header_container\"]/div[2]/div[2]/span/span")
+    private ExtendedWebElement defaultDropdownMenu;
+
+    public InventoryPageDemo(WebDriver driver) {
+        super(driver);
+        setPageURL("/inventory.html");
+    }
+    
+    public boolean isOptionDropdownByNamePresent(String optionMenu) {
+        return optionDropdownByName.format(optionMenu).isElementPresent();
+    }
+
+    public boolean isOptionDropdownByNameZAPresent(String optionMenu) {
+        return optionDropdownByNameZA.format(optionMenu).isElementPresent();
+    }
+
+    public boolean isOptionDropdownByPriceLHPresent(String optionMenu) {
+        return optionDropdownByPriceLH.format(optionMenu).isElementPresent();
+    }
+
+    public boolean isOptionDropdownByPriceHLPresent(String optionMenu) {
+        return optionDropdownByPriceHL.format(optionMenu).isElementPresent();
+    }
+
+    public String getDropdownByPriceHL() {
+        return optionDropdownByPriceHL.getText();
+    }
 
     public boolean isMenuButtonPresent() {
         return menuButton.isElementPresent();
@@ -38,7 +76,7 @@ public class InventoryPageDemo extends AbstractPage {
         return productImage.isElementPresent();
     }
 
-    public String productName() {
+    public String getProductName() {
         return productName.getText();
     }
 
@@ -46,7 +84,7 @@ public class InventoryPageDemo extends AbstractPage {
         return productDescription.isElementPresent();
     }
 
-    public String productPrice() {
+    public String getProductPrice() {
         return productPrice.getText();
     }
 
@@ -58,9 +96,11 @@ public class InventoryPageDemo extends AbstractPage {
         return sortItem.isElementPresent();
     }
 
-    public InventoryPageDemo(WebDriver driver) {
-        super(driver);
-        setPageURL("/inventory.html");
+    public boolean isDefaultDropdownMenuPresent() {
+        return defaultDropdownMenu.isElementPresent();
     }
 
+    public String getDefaultDropdownMenu() {
+        return defaultDropdownMenu.getText();
+    }
 }

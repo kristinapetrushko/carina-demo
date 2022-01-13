@@ -1,14 +1,9 @@
 package com.qaprosoft.carina.demo.gui.mypages;
-
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
 
 public class HomePageDemo extends AbstractPage {
 
@@ -89,7 +84,5 @@ public class HomePageDemo extends AbstractPage {
     public String getErrorMessage() {
         return errorMessage.getText();
     }
-
-
 }
 
