@@ -52,7 +52,7 @@ public class MyWebTest implements IAbstractTest {
     public void testElementsOnHomePage() {
         homePageDemo.open();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(homePageDemo.isPageOpened(), "Home page is not opened");
+        Assert.assertTrue(homePageDemo.isPageOpened(), "Home page is not opened");
         softAssert.assertTrue(homePageDemo.isUsernameFieldPresent(), "Username field is null");
         softAssert.assertTrue(homePageDemo.isPasswordFieldPresent(), "Password field is null");
         softAssert.assertTrue(homePageDemo.isLoginButtonPresent(), "Login button is null");
@@ -101,10 +101,11 @@ public class MyWebTest implements IAbstractTest {
         homePageDemo.typePassword(correctPassword);
         InventoryPageDemo inventoryPageDemo = homePageDemo.clickLoginBtn();
         Assert.assertTrue(inventoryPageDemo.isPageOpened(), "Inventory page is not opened");
-        Assert.assertTrue(inventoryPageDemo.isDefaultDropdownMenuPresent(), "Default Dropdown Menu is not present");
-        String actualDefaultDropdownMenu = inventoryPageDemo.getDefaultDropdownMenu();
-        Assert.assertEquals(actualDefaultDropdownMenu,expectedDefaultDropdownMenu, "Incorrect default dropdown menu");
-        Assert.assertEquals(inventoryPageDemo.getDropdownByPriceHL(), "Price (high to low)", "There are different elements of menu");
+        String actualDefaultDropdownMenu = inventoryPageDemo.getActiveOptionDropdownMenu();
+        Assert.assertEquals(actualDefaultDropdownMenu,expectedDefaultDropdownMenu, "Incorrect default filter dropdown menu");
+        inventoryPageDemo.clickPriceHL();
+        Assert.assertEquals(inventoryPageDemo.getActiveOptionDropdownMenu().toLowerCase(), "Price (high to low)".toLowerCase(),
+                "There are different elements of menu");
     }
 }
 

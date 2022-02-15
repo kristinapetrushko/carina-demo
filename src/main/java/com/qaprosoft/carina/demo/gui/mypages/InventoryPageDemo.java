@@ -41,13 +41,13 @@ public class InventoryPageDemo extends AbstractPage {
     private ExtendedWebElement optionDropdownByPriceHL;
 
     @FindBy(xpath = "//*[@id=\"header_container\"]/div[2]/div[2]/span/span")
-    private ExtendedWebElement defaultDropdownMenu;
+    private ExtendedWebElement activeOptionDropdownMenu;
 
     public InventoryPageDemo(WebDriver driver) {
         super(driver);
         setPageURL("/inventory.html");
     }
-    
+
     public boolean isOptionDropdownByNamePresent(String optionMenu) {
         return optionDropdownByName.format(optionMenu).isElementPresent();
     }
@@ -64,8 +64,8 @@ public class InventoryPageDemo extends AbstractPage {
         return optionDropdownByPriceHL.format(optionMenu).isElementPresent();
     }
 
-    public String getDropdownByPriceHL() {
-        return optionDropdownByPriceHL.getText();
+    public void clickPriceHL() {
+        optionDropdownByPriceHL.click();
     }
 
     public boolean isMenuButtonPresent() {
@@ -96,11 +96,7 @@ public class InventoryPageDemo extends AbstractPage {
         return sortItem.isElementPresent();
     }
 
-    public boolean isDefaultDropdownMenuPresent() {
-        return defaultDropdownMenu.isElementPresent();
-    }
-
-    public String getDefaultDropdownMenu() {
-        return defaultDropdownMenu.getText();
+    public String getActiveOptionDropdownMenu() {
+        return activeOptionDropdownMenu.getText();
     }
 }
